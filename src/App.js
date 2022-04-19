@@ -12,6 +12,7 @@ class App extends React.Component {
   render() {
     // return (<p>TrybeTunes</p>); tava dando unreachable code no BrowserRouter....
     return (
+
       <BrowserRouter>
         <Switch>
           <Route exact path="/" component={ Login } />
@@ -20,7 +21,7 @@ class App extends React.Component {
           <Route path="/favorites" component={ Favorites } />
           <Route exact path="/profile" component={ Profile } />
           <Route exact path="/profile/edit" component={ ProfileEdit } />
-          <Route component={ NotFound } />
+          <Route path="*" component={ NotFound } />
         </Switch>
       </BrowserRouter>
     );
