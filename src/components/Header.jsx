@@ -1,4 +1,4 @@
-/* import React from 'react';
+import React from 'react';
 import { getUser } from '../services/userAPI';
 import Loading from '../pages/Loading';
 
@@ -18,21 +18,28 @@ class Header extends React.Component {
   }
 
   catchUser = async () => {
-    console.log('catchuser')
+    console.log('catchuser');
     this.setState({
       loading: true,
     });
-    const { userName } = await getUser();
+    const userName = await getUser();
+    // console.log(userName); // retorna um objeto, objetivo: pegar o name desse objeto (na linha 39, dentro do h2).
+    this.setState({
+      loading: false,
+      user: userName,
+    });
   }
 
   render() {
+    const { loading, user } = this.state;
     return (
       <header data-testid="header-component">
         <h1>Trybetunes</h1>
-          {loading && <Loading />}
-        </header>
+        {loading && <Loading />}
+        <h2 data-testid="header-user-name">{user.name}</h2>
+      </header>
     );
   }
 }
 
-export default Header; */
+export default Header;
