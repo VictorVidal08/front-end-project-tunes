@@ -43,9 +43,14 @@ class Login extends React.Component {
     console.log('testeverify');
     const { loginName } = this.state;
     const minLength = 3;
-    loginName.length >= minLength
+    if (loginName.length >= minLength) {
+      this.setState({ disabled: false });
+    } else {
+      this.setState({ disabled: true });
+    }
+    /* (loginName.length >= minLength)
       ? this.setState({ disabled: false })
-      : this.setState({ disabled: true });
+      : this.setState({ disabled: true }); */
   }
 
   render() {
