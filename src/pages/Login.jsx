@@ -40,7 +40,7 @@ class Login extends React.Component {
   }
 
   verifyUserLength = () => {
-    console.log('testeverify');
+    // console.log('testeverify');
     const { loginName } = this.state;
     const minLength = 3;
     if (loginName.length >= minLength) {
