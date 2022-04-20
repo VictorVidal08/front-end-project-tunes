@@ -17,7 +17,7 @@ class Login extends React.Component {
 
   // desconstroi target de event
   handleChange = ({ target }) => {
-    const { name, value } = target;
+    const { name, value } = target; // desconstroi name e value do target(elemento acionador do evento)
     this.setState({
       [name]: value,
     }, () => this.verifyUserLength());

@@ -19,7 +19,7 @@ class Header extends React.Component {
   }
 
   catchUser = async () => {
-    console.log('catchuser');
+    // console.log('catchuser');
     this.setState({
       loading: true,
     });
