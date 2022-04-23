@@ -83,7 +83,7 @@ class Search extends React.Component {
         {albuns.length > 0
           ? (albuns.map((album, index) => ( // index por causa de lint
             <div key={ index }>
-              {console.log(album.artistName)}
+              {/* {console.log(album.artistName)} */}
               <img
                 src={ album.artworkUrl100 }
                 alt={ album.artistNameartistName }
@@ -97,7 +97,7 @@ class Search extends React.Component {
                 { `${album.artistName}` }
               </p>
               <Link
-                to={ `/album/${album.collectionId}` }
+                to={ `/album/${album.collectionId}` } // pega o id e coloca no fim da url
                 data-testid={ `link-to-album-${album.collectionId}` }
               >
                 See more info about album
