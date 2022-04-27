@@ -6,6 +6,8 @@ import MusicCard from './MusicCard';
 import { getFavoriteSongs } from '../services/favoriteSongsAPI';
 import Loading from './Loading';
 
+// codigo realizado com ajuda do takashi.
+
 class Album extends React.Component {
   constructor() {
     super();

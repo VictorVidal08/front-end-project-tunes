@@ -28,7 +28,7 @@ class MusicCard extends React.Component {
       isFavorite: target.checked,
     }, async () => {
       const { isFavorite } = this.state;
-      // console.log(isFavorite);
+      console.log(isFavorite);
       const { song } = this.props;
       if (isFavorite === true) {
         await addSong(song);
