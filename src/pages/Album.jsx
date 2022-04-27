@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import Header from '../components/Header';
 import getMusics from '../services/musicsAPI';
 import MusicCard from './MusicCard';
-import { getFavoriteSongs } from '../services/favoriteSongsAPI';
 import Loading from './Loading';
 
 // codigo realizado com ajuda do takashi.
@@ -15,7 +14,6 @@ class Album extends React.Component {
       musics: [],
       artist: '',
       album: '',
-      favRecovered: [],
       loading: false,
     };
   }
@@ -25,15 +23,6 @@ class Album extends React.Component {
     const { match: { params: { id } } } = this.props;
     // console.log(id);
     this.handlerGetMusics(id);
-    this.setState({
-      loading: true,
-    });
-    const recoveryFavorites = await getFavoriteSongs();
-    this.setState({
-      loading: false,
-      favRecovered: recoveryFavorites,
-    });
-    // console.log(this.state.favRecovered);
   }
 
    handlerGetMusics = async (id) => {
@@ -52,7 +41,7 @@ class Album extends React.Component {
    };
 
    render() {
-     const { artist, album, musics, favRecovered, loading } = this.state;
+     const { artist, album, musics, loading } = this.state;
      return (
        <div data-testid="page-album">
          Album
@@ -67,8 +56,6 @@ class Album extends React.Component {
              previewUrl={ song.previewUrl }
              trackId={ song.trackId }
              song={ song } // passando a musica como prop para musicCard
-             favoritesRecovered={ favRecovered.some((item) => (
-               item.trackId === song.trackId)) }
            />
          ))}
        </div>
