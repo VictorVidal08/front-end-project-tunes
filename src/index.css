@@ -5,6 +5,17 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #2d3436;
+  color: white;
+}
+
+button {
+  background-color: #b2bec3;
+  color: white;
+  font-size: 15px;
+  font-weight: 600;
+  margin: 5px;
+  padding: 5px 20px;
 }
 
 code {
@@ -12,8 +23,17 @@ code {
     monospace;
 }
 
+input {
+  border-radius: 5px;
+  margin: 5px;
+  padding: 5px 10px;
+  width: 50%;
+  margin-bottom: 5%;
+}
+
 .loading {
   align-items: center;
   display: flex;
   justify-content: center;
 }
+
