@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom'; // eu tinha importado separado, mas lint reclamou
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Login from './pages/Login';
 import Search from './pages/Search';
 import Album from './pages/Album';
@@ -10,7 +10,6 @@ import NotFound from './pages/NotFound';
 
 class App extends React.Component {
   render() {
-    // return (<p>TrybeTunes</p>); tava dando unreachable code no BrowserRouter....
     return (
 
       <BrowserRouter>

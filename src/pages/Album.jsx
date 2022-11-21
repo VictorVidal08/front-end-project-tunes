@@ -4,8 +4,7 @@ import Header from '../components/Header';
 import getMusics from '../services/musicsAPI';
 import MusicCard from './MusicCard';
 import Loading from './Loading';
-
-// codigo realizado com ajuda do takashi.
+import './Album.css';
 
 class Album extends React.Component {
   constructor() {
@@ -19,22 +18,20 @@ class Album extends React.Component {
   }
 
   async componentDidMount() {
-    // console.log(this.props);
     const { match: { params: { id } } } = this.props;
-    // console.log(id);
     this.handlerGetMusics(id);
   }
 
    handlerGetMusics = async (id) => {
      const musics = await getMusics(id);
      console.log(musics);
-     const { artistName, collectionName } = musics[0]; // para pegar o nome do artista e album na primeira posição do array musics;
+     const { artistName, collectionName } = musics[0];
      this.setState({
        artist: artistName,
        album: collectionName,
      });
-     const albumSongs = musics.slice(1); // retira o primeiro item da lista(que são informações sobre o album...)
-     // console.log(albumSongs);
+     const albumSongs = musics.slice(1);
+
      this.setState({
        musics: albumSongs,
      });
@@ -44,20 +41,22 @@ class Album extends React.Component {
      const { artist, album, musics, loading } = this.state;
      return (
        <div data-testid="page-album">
-         Album
          <Header />
          { loading && (<Loading />)}
-         <h2 data-testid="album-name">{ album }</h2>
-         <h3 data-testid="artist-name">{ artist }</h3>
-         { musics.map((song, index) => (
-           <MusicCard
-             key={ index }
-             trackName={ song.trackName }
-             previewUrl={ song.previewUrl }
-             trackId={ song.trackId }
-             song={ song } // passando a musica como prop para musicCard
-           />
-         ))}
+         <div className="albuns-class">
+           <h2 data-testid="album-name">{ album }</h2>
+           <h3 data-testid="artist-name">{ artist }</h3>
+
+           { musics.map((song, index) => (
+             <MusicCard
+               key={ index }
+               trackName={ song.trackName }
+               previewUrl={ song.previewUrl }
+               trackId={ song.trackId }
+               song={ song }
+             />
+           ))}
+         </div>
        </div>
      );
    }
@@ -68,7 +67,7 @@ Album.propTypes = {
     params: PropTypes.shape({
       id: PropTypes.string,
     }).isRequired,
-  }).isRequired, // proptypes.shape define o formato do objeto. ref https://dev.to/cesareferrari/how-to-specify-the-shape-of-an-object-with-proptypes-3c56
+  }).isRequired,
 };
 
 export default Album;
