@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { addSong, getFavoriteSongs, removeSong } from '../services/favoriteSongsAPI';
 import Loading from './Loading';
+import './MusicCard.css';
 
 class MusicCard extends React.Component {
   constructor() {
@@ -24,11 +25,10 @@ class MusicCard extends React.Component {
   }
 
   handleClick = ({ target }) => {
-    // console.log(target.checked);
     this.setState({
       loading: true,
       isFavorite: target.checked,
-    }, async () => { // setState é assincrona, tem que usar uma callback;
+    }, async () => {
       const { isFavorite } = this.state;
       console.log(isFavorite);
       const { song } = this.props;
@@ -38,7 +38,6 @@ class MusicCard extends React.Component {
           loading: false,
         });
       } else if (isFavorite === false) {
-        // console.log('false');
         await removeSong(song);
         this.setState({
           loading: false,
@@ -52,10 +51,9 @@ class MusicCard extends React.Component {
     const { isFavorite, loading } = this.state;
     return (
 
-      <div>
-        {/* {console.log(this.props)} */}
+      <div className="musicCard-mother">
         { loading ? (<Loading />) : (
-          <section>
+          <section className="musicCard-class">
             <h4>{ trackName }</h4>
             <audio data-testid="audio-component" src={ previewUrl } controls>
               <track kind="captions" />
@@ -63,8 +61,8 @@ class MusicCard extends React.Component {
               {' '}
               <code>audio</code>
             </audio>
-            <label htmlFor="favorite">
-              Favorita
+            <label htmlFor="favorite" className="label">
+              Favorite Music?
               <input
                 id="favorite"
                 type="checkbox"
