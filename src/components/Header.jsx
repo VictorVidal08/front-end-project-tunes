@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { getUser } from '../services/userAPI';
 import Loading from '../pages/Loading';
+import './Header.css';
 
 class Header extends React.Component {
   constructor() {
@@ -14,17 +15,14 @@ class Header extends React.Component {
   }
 
   componentDidMount() {
-    // console.log(this);
     this.catchUser();
   }
 
   catchUser = async () => {
-    // console.log('catchuser');
     this.setState({
       loading: true,
     });
     const userName = await getUser();
-    // console.log(userName); // retorna um objeto, objetivo: pegar o name desse objeto (na linha 39, dentro do h2).
     this.setState({
       loading: false,
       user: userName,
@@ -35,12 +33,16 @@ class Header extends React.Component {
     const { loading, user } = this.state;
     return (
       <header data-testid="header-component">
-        <h1>Trybetunes</h1>
+        <h1 className="header-title">Project Tunes</h1>
         {loading && <Loading />}
-        <h2 data-testid="header-user-name">{user.name}</h2>
-        <Link to="/search" data-testid="link-to-search">Pesquisar</Link>
-        <Link to="/favorites" data-testid="link-to-favorites">Favoritxs</Link>
-        <Link to="/profile" data-testid="link-to-profile">Perfil</Link>
+        <h2 data-testid="header-user-name" className="user-name">{user.name}</h2>
+        <div className="header-mother">
+          <div className="link-container">
+            <Link to="/search" data-testid="link-to-search">Search</Link>
+            <Link to="/favorites" data-testid="link-to-favorites">Favorites</Link>
+            <Link to="/profile" data-testid="link-to-profile">User Profile</Link>
+          </div>
+        </div>
       </header>
     );
   }
