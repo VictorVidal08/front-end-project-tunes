@@ -1,4 +1,3 @@
-# :construction: README em construção ! :construction:
 # 📻 Project-Tunes 🎶
 
 <details>
@@ -6,9 +5,13 @@
 
 <h1>🔊 Welcome to Project Tunes! 🎵</h1>
 
+# Deploy:
+
+https://front-end-project-tunes-production.up.railway.app/
+
 <p>This project is a front-end application that consumes an API of musics. The user will chose an artist, and the app will show and being able to reproduce some musics of that singer or band. It's also possible to create a favorite musicas list and edit the user's profile.</p>
 
-Project feature list:
+# Project Features:
 
   - Login;
   - Search for a band or artist;
@@ -46,6 +49,10 @@ Project feature list:
 </details>
 
 <h1>🔊 Bem vindo ao Projeto Tunes! 🎵</h1>
+
+# Deploy:
+
+https://front-end-project-tunes-production.up.railway.app/
 
 # Resumo do projeto:
 
